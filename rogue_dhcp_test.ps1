@@ -18,7 +18,6 @@ $script_version = "1.0"
 Write-Host $script_name
 Write-Host "Skriptstand: 12.01.2021 08:00"
 Write-Host "Version: $script_version"
-
 $ErlaubteDHCPServer = @("192.168.178.1")
  
 #Replace the Download URL to where you've uploaded the DHCPTest file yourself. We will only download this file once. 
@@ -43,7 +42,7 @@ $GefundeneDHCPServer = do {
  
 foreach ($DHCPSERVER in $GefundeneDHCPServer) {
     if ($DHCPSERVER -notin $ErlaubteDHCPServer) { 
-   $Status= "Nicht erlaubter DHCP Server gefunden. IP des Servers: $ListedServer"
+   $Status= "Nicht erlaubter DHCP Server gefunden. IP des Servers: $DHCPSERVER"
    $Fehler = 1
     
      }
@@ -53,7 +52,6 @@ if (!$Status) {
 $Status = "Alles in Ordnung. Keine weiteren DHCP Server gefunden."
 $Fehler = 0
 }
-
 if ($fehler -gt 0) { # Bei Fehler
     write-host $Status
     $exitcode = 2001
