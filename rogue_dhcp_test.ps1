@@ -18,9 +18,14 @@ $script_version = "1.0"
 Write-Host $script_name
 Write-Host "Skriptstand: 12.01.2021 08:00"
 Write-Host "Version: $script_version"
-$ErlaubteDHCPServer = @("192.168.178.1")
- 
+
+#
+$ErlaubteDHCPServer = "192.168.0.1,192.168.0.2"
 $DownloadURL = "https://coswa.de/downloads/dhcptest-0.7-win64.exe"
+#>
+$ErlaubteDHCPServer = $ErlaubteDHCPServer.split(',')
+
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $DownloadPfad = "c:\DHCPTest"
 $Filename = "\DHCPTest.exe"
 try {
