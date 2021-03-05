@@ -20,7 +20,7 @@ Write-Host "Skriptstand: 12.01.2021 08:00"
 Write-Host "Version: $script_version"
 
 #
-$ErlaubteDHCPServer = "192.168.0.1,192.168.0.2"
+$ErlaubteDHCPServer = "192.168.0.1,192.168.0.3"
 $DownloadURL = "https://coswa.de/downloads/dhcptest-0.7-win64.exe"
 #>
 $ErlaubteDHCPServer = $ErlaubteDHCPServer.split(',')
@@ -45,11 +45,11 @@ $GefundeneDHCPServer = do {
 } while ($Tests -lt 2)
  
 foreach ($DHCPSERVER in $GefundeneDHCPServer) {
-    if ($DHCPSERVER -notin $ErlaubteDHCPServer) { 
-   $Status= "Nicht erlaubter DHCP Server gefunden. IP des Servers: $DHCPSERVER"
+if ($ErlaubteDHCPServer.Contains($DHCPSERVER) -eq $false) {
+$Status= "Nicht erlaubter DHCP Server gefunden. IP des Servers: $DHCPSERVER"
    $Fehler = 1
-    
-     }
+}
+
 }
  
 if (!$Status) { 
