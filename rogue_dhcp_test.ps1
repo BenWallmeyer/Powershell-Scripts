@@ -20,7 +20,6 @@ Write-Host "Skriptstand: 12.01.2021 08:00"
 Write-Host "Version: $script_version"
 $ErlaubteDHCPServer = @("192.168.178.1")
  
-#Replace the Download URL to where you've uploaded the DHCPTest file yourself. We will only download this file once. 
 $DownloadURL = "https://coswa.de/downloads/dhcptest-0.7-win64.exe"
 $DownloadPfad = "c:\DHCPTest"
 $Filename = "\DHCPTest.exe"
